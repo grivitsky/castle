@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Rakkas');
+
+body{
+  background-color:#232728;
+  overflow:hidden;
+  font-family:'Rakkas';
+}
+#pixiCanvas{
+  position:absolute;
+}
+.title{
+  position:absolute;
+  left:50%;
+  top:50%;
+  text-align:center;
+  transform:translate(-50%, -50%);
+  color:white;
+  font-size:5em;
+}
+.title{
+  position:absolute;
+  left:50%;
+  top:50%;
+  text-align:center;
+  transform:translate(-50%, -50%);
+  color:#75bae1;
+  font-size:10em;
+}
+
+.paragraph{
+  position:absolute;
+  left:50%;
+  top:70%;
+  text-align:center;
+  transform:translate(-50%, -50%);
+  color:white;
+  font-size:1em;
+}
+
+
+#credits{
+  position:absolute;
+  width:100%;
+  margin: auto;
+  bottom:0;
+  margin-bottom:12px;
+  font-family:'Rakkas', sans-serif;
+  letter-spacing:0.1rem;
+  color:#777;
+  font-size:0.7em;
+  text-transform: uppercase;
+  text-align : center;
+}
+#credits a {
+  color:#777;
+  text-decoration:none;
+}
+
+#credits a:hover {
+  color:#DBAB4C;
+}
