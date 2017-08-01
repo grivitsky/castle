@@ -130,8 +130,9 @@ var pic;
 
 function onAssetsLoaded(loader,resources){
   
-  backgroundPlane = new FloatingObject( "db.png", container, { tiling:true, depth:0, initPcX:0, initPcY:0, initDispY:0, initDispX:0, centerPivotX:false, centerPivotY:false, affectedByScale:false});
-  
+  //backgroundPlane = new FloatingObject( "background-base.png", container, { tiling:true, depth:0, initPcX:0, initPcY:0, initDispY:0, initDispX:0, centerPivotX:false, centerPivotY:false, affectedByScale:false});
+  //TODO: background repeat
+    
   illu = new PIXI.Sprite();
   container.addChild(illu);
   
@@ -141,7 +142,7 @@ function onAssetsLoaded(loader,resources){
 
   cupolaLeft = new FloatingObject( "ba.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:-220, hideBelowX:sizeM });
   
-  cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
+  //cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
   
   starTopBig = new FloatingObject( "bin.png", illu, { depth:-8, initPcX:.5, initPcY:.1, hideBelowX:sizeM });
   
@@ -241,7 +242,7 @@ function onAssetsLoaded(loader,resources){
   
   //waterSurfaceE = new FloatingObject( "water-surface-e.png", illu, { depth:12, initPcX:.85, initPcY:.91, initDispY:-65 });
   
-  //castle = new FloatingObject( "castle.png", illu, { depth:14, initPcX:.5, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0 });
+  castle = new FloatingObject( "db.png", illu, { depth:14, initPcX:.75, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0 });
   
   //tentacleLeft = new FloatingObject( "tentacle-left.png", illu, { depth:18, initPcX:.5, initDispX:-115, initPcY:.92, initDispY:-70, hideBelowX:sizeL });
   
