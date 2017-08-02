@@ -17,6 +17,7 @@ var globalScale = 1;
 var brightness = 1;
 var repulsion = .95;
 var noise = .0;
+var InitScaleAmount= 0.28;
 
 var elements = [];
 var mousePos = {x:window.innerWidth/2, y:window.innerHeight/2};
@@ -140,33 +141,56 @@ function onAssetsLoaded(loader,resources){
   container.addChild(maskIllu);
   illu.mask = maskIllu;
 
-  cupolaLeft = new FloatingObject( "ba.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:-220, hideBelowX:sizeM });
+  BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0.89, initPcY:0.18, floatFrequency:.02, floatAmplitude:7, initDispY:125, initDispX:-220,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  Design = new FloatingObject( "ux.png", illu, { depth:14, initPcX:.68, initPcY:.5, floatFrequency:.025, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
+  WebDev = new FloatingObject( "wd.png", illu, { depth:14, initPcX:.69, initPcY:.40, floatFrequency:.027, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   //cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
-  
-  starTopBig = new FloatingObject( "bin.png", illu, { depth:-8, initPcX:.5, initPcY:.1, hideBelowX:sizeM });
-  
-  starTopSmall = new FloatingObject( "circle.png", illu, { depth:-8, initPcX:.55, initPcY:.11, hideBelowX:sizeS });
-  
-  sun = new FloatingObject( "cloud1.png", illu, { depth:-6, initPcX:0, initPcY:0, initDispY:140, initDispX:240, hideBelowX:sizeXS });
-  
-  moonTopRight = new FloatingObject( "cloud2.png", illu, { depth:-6, initPcX:1, initPcY:0, initDispX:-125, initDispY:125, hideBelowX:sizeXS });
-  
-  saturnTopRight = new FloatingObject( "cloudmin.png", illu, { depth:-6, initPcX:1, initPcY:0, initDispX:-185, initDispY:60, hideBelowX:sizeS });
-  
-  saturnCloudTopRight = new FloatingObject( "diagr.png", illu, { depth:-7, initPcX:.77, initPcY:.15, hideBelowX:sizeL });
-  
-  planetTopLeft = new FloatingObject( "erth.png", illu, { depth:-7, initPcX:.35, initPcY:.13, hideBelowX:sizeS });
-  
-  meteorite = new FloatingObject( "inst.png", illu, { depth:-7, initPcX:.92, initPcY:.35, hideBelowX:sizeL });
-  
-  planetOrbitTopRight = new FloatingObject( "md.png", illu, { depth:-6, initPcX:1, initPcY:0, initDispX:-145, initDispY:200 });
+  QA = new FloatingObject( "qa.png", illu, { depth:14, initPcX:.89, initPcY:.5, floatFrequency:.023, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.88, initPcY:0.20, floatFrequency:.021, floatAmplitude:7, initDispX:0, initDispY:200, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+    
 
-  mountainTopRight = new FloatingObject( "orbit.png", illu, { depth:-5, initPcX:.65, initPcY:.2, hideBelowX:sizeS });
-  mountainTopLeft = new FloatingObject( "qa.png", illu, { depth:-5, initPcX:.35, initPcY:.2, hideBelowX:sizeS });
-  cloudTop = new FloatingObject( "ux.png", illu, { depth:-5, initPcX:.5, initPcY:.2, hideBelowX:sizeS });
+  CloudWithStar = new FloatingObject( "cloud2.png", illu, { depth:14, initPcX:0.76, initPcY:0.61, initDispX:10, initDispY:0, floatFrequency:.02, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });   
   
-  cloudB3 = new FloatingObject( "wd.png", illu, { depth:-4, initRotation:.1, initPcX:.71, initPcY:.27, hideBelowX:sizeS });
+  CloudWithHDD = new FloatingObject( "cloud1.png", illu, { depth:14, initPcX:0.61, initPcY:0.44, initDispY:155, initDispX:215, floatFrequency:.03, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  planet = new FloatingObject( "erth.png", illu, { depth:14, initPcX:.81, initPcY:.47, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  orbit = new FloatingObject( "orbit.png", illu, { depth:14, initPcX:.82, initPcY:.45, floatFrequency:.03, floatAmplitude:5,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  database = new FloatingObject( "db.png", illu, { depth:14, initPcX:.75, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+     
+  Circle = new FloatingObject( "circle.png", illu, { depth:14, initPcX:.81, initPcY:.65, initDispX: 15, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  CloudWithChip = new FloatingObject( "cloudmin.png", illu, { depth:14, initPcX:0.8, initPcY:0.57, initDispX:25, initDispY:0, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  
+  bitArray = new FloatingObject( "bin.png", illu, { depth:14, initPcX:.77, initPcY:.66, initDispX: -4, initDispY: -5, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  instruments = new FloatingObject( "inst.png", illu, { depth:14, initPcX:.73, initPcY:.63, floatFrequency:.03, floatAmplitude:2, initDispX: 10, initDispY: 20,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+   
+  Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.84, initPcY:.59, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  
+
+
+
+    
+  
   
   //shelfLeftSmall = new FloatingObject( "shelf-left-small.png", illu, { depth:-4, initPcX:.23, initPcY:.48, hideBelowX:sizeL, floatFrequency:.02, floatAmplitude:2, floatAngle:0});
   
@@ -242,7 +266,6 @@ function onAssetsLoaded(loader,resources){
   
   //waterSurfaceE = new FloatingObject( "water-surface-e.png", illu, { depth:12, initPcX:.85, initPcY:.91, initDispY:-65 });
   
-  castle = new FloatingObject( "db.png", illu, { depth:14, initPcX:.75, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0 });
   
   //tentacleLeft = new FloatingObject( "tentacle-left.png", illu, { depth:18, initPcX:.5, initDispX:-115, initPcY:.92, initDispY:-70, hideBelowX:sizeL });
   
