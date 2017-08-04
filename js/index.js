@@ -1,5 +1,5 @@
 var WIDTH = window.innerWidth,
-    HEIGHT = WIDTH/16*9;
+    HEIGHT = window.innerHeight;
 var castle, 
     frame, maskIllu, cornerTL, cornerTR, cornerBL, cornerBR, frameLineTop, frameLineBottom, frameTopMiddle, frameBottomMiddle;
 
@@ -11,7 +11,7 @@ var sizeXS = 480;
 var pixiCanvas = document.getElementById("pixiCanvas");
 var framePadding = 0;
 var framePaddingTarget = 0;
-var parallaxCoeff = 2;
+var parallaxCoeff = 0.8;
 var globalScale = 1;
 var brightness = 1;
 var repulsion = .95;
@@ -151,7 +151,7 @@ function onMouseMove(event) {
 function onWindowResize() {
   
   WIDTH = window.innerWidth;
-  HEIGHT = WIDTH/16*9;
+  HEIGHT = window.innerHeight;
   //renderer.resize(WIDTH, HEIGHT);
   repositionAll();
 }
