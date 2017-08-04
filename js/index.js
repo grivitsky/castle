@@ -1,5 +1,5 @@
-var HEIGHT = window.innerHeight,
-    WIDTH = window.innerWidth;
+var WIDTH = window.innerWidth,
+    HEIGHT = WIDTH/16*9;
 var castle, 
     frame, maskIllu, cornerTL, cornerTR, cornerBL, cornerBR, frameLineTop, frameLineBottom, frameTopMiddle, frameBottomMiddle;
 
@@ -9,15 +9,105 @@ var sizeS = 720;
 var sizeXS = 480;
 
 var pixiCanvas = document.getElementById("pixiCanvas");
-
 var framePadding = -20;
 var framePaddingTarget = 40;
-var parallaxCoeff = 3;
+var parallaxCoeff = 2;
 var globalScale = 1;
 var brightness = 1;
 var repulsion = .95;
 var noise = .0;
 var InitScaleAmount= 0.28;
+   
+    var cw=0;
+  $(document).ready(function() {
+     cw = $(window).width();
+
+  });
+  $(window).resize(function() {
+    cw = $(window).width();
+    if(cw<=1920 && cw>=1680 && InitScaleAmount!=0.28)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.28;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1680 && cw>=1536 && InitScaleAmount!=0.24)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.24;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1536 && cw>=1440 && InitScaleAmount!=0.22)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.22;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1440 && cw>=1366 && InitScaleAmount!=0.2)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.2;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1366 && cw>=1280 && InitScaleAmount!=0.18)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.18;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1280 && cw>=1024 && InitScaleAmount!=0.16)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.16;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=1024 && cw>=768 && InitScaleAmount!=0.14)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.14;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=768 && cw>=720 && InitScaleAmount!=0.12)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.12;
+      
+    onAssetsLoaded(loader,loader);
+    }
+    if(cw<=720 && cw>=576 && InitScaleAmount!=0.1)
+    {
+    console.log('lol');
+    container.removeChild(illu);
+      //renderer.render(container);
+    InitScaleAmount= 0.1;
+      
+    onAssetsLoaded(loader,loader);
+    }
+  });
+
 
 var elements = [];
 var mousePos = {x:window.innerWidth/2, y:window.innerHeight/2};
@@ -39,7 +129,7 @@ colorMatrix.brightness(brightness);
 container.filters = [noiseFilter, colorMatrix];
 //*/
 
-//var loader = new PIXI.loaders.Loader('https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/',30);
+
 var loader = new PIXI.loaders.Loader('',30);
 
 loader.add('world', 'world.json');
@@ -54,13 +144,14 @@ function onMouseMove(event) {
   var tx = -1 + (event.clientX / WIDTH)*2;
   var ty = 1 - (event.clientY / HEIGHT)*2;
   mousePos = {x:tx, y:ty};
-  globalScale = .8 + (event.clientX / WIDTH)*.4;
-  repulsion = .95 + (event.clientX / WIDTH)*.05;
+  globalScale = .9 + (event.clientX / WIDTH)*.15;
+  repulsion = 0.9 + (event.clientX / WIDTH)*.05;
 }
 
 function onWindowResize() {
-  HEIGHT = window.innerHeight;
+  
   WIDTH = window.innerWidth;
+  HEIGHT = WIDTH/16*9;
   renderer.resize(WIDTH, HEIGHT);
   repositionAll();
 }
@@ -128,7 +219,9 @@ TweenMax.to(this, 4, {framePadding:framePaddingTarget, ease:Power4.easeInOut, on
     
 
 var pic;
+  
 
+    
 function onAssetsLoaded(loader,resources){
   
   //backgroundPlane = new FloatingObject( "background-base.png", container, { tiling:true, depth:0, initPcX:0, initPcY:0, initDispY:0, initDispX:0, centerPivotX:false, centerPivotY:false, affectedByScale:false});
@@ -139,9 +232,10 @@ function onAssetsLoaded(loader,resources){
   
   maskIllu = new PIXI.Graphics();
   container.addChild(maskIllu);
-  illu.mask = maskIllu;
-
-  BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0.89, initPcY:0.18, floatFrequency:.02, floatAmplitude:7, initDispY:125, initDispX:-220,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  illu.mask = maskIllu;    
+    
+    
+  BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0.89, initPcY:0.17, floatFrequency:.02, floatAmplitude:7, initDispY:125, initDispX:-220,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
     
   Design = new FloatingObject( "ux.png", illu, { depth:14, initPcX:.68, initPcY:.5, floatFrequency:.025, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
@@ -149,7 +243,7 @@ function onAssetsLoaded(loader,resources){
   //cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
   QA = new FloatingObject( "qa.png", illu, { depth:14, initPcX:.89, initPcY:.5, floatFrequency:.023, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
-  MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.88, initPcY:0.20, floatFrequency:.021, floatAmplitude:7, initDispX:0, initDispY:200, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.88, initPcY:0.18, floatFrequency:.021, floatAmplitude:7, initDispX:0, initDispY:200, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
     
 
@@ -171,25 +265,47 @@ function onAssetsLoaded(loader,resources){
     
   instruments = new FloatingObject( "inst.png", illu, { depth:14, initPcX:.73, initPcY:.63, floatFrequency:.03, floatAmplitude:2, initDispX: 10, initDispY: 20,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
    
-  Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.84, initPcY:.59, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.85, initPcY:.59, initDispX: -12, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
-
-  
-  
-  
-  
-  
-  
-  
-  
- 
-  
-  
-  
-
-
-
     
+    
+  //BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0.89, initPcY:0.17, floatFrequency:.02, floatAmplitude:7, initDispY:125, initDispX:-220,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  //Design = new FloatingObject( "ux.png", illu, { depth:14, initPcX:.68, initPcY:.5, floatFrequency:.025, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  
+  //WebDev = new FloatingObject( "wd.png", illu, { depth:14, initPcX:.69, initPcY:.40, floatFrequency:.027, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  //cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
+  //QA = new FloatingObject( "qa.png", illu, { depth:14, initPcX:.89, initPcY:.5, floatFrequency:.023, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  //MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.88, initPcY:0.18, floatFrequency:.021, floatAmplitude:7, initDispX:0, initDispY:200, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+    
+
+  //CloudWithStar = new FloatingObject( "cloud2.png", illu, { depth:14, initPcX:0.76, initPcY:0.61, initDispX:10, initDispY:0, floatFrequency:.02, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });   
+  
+  //CloudWithHDD = new FloatingObject( "cloud1.png", illu, { depth:14, initPcX:0.61, initPcY:0.44, initDispY:155, initDispX:215, floatFrequency:.03, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  //planet = new FloatingObject( "erth.png", illu, { depth:14, initPcX:.81, initPcY:.47, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  //orbit = new FloatingObject( "orbit.png", illu, { depth:14, initPcX:.82, initPcY:.45, floatFrequency:.03, floatAmplitude:5,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  //database = new FloatingObject( "db.png", illu, { depth:14, initPcX:.75, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+     
+  //Circle = new FloatingObject( "circle.png", illu, { depth:14, initPcX:.81, initPcY:.65, initDispX: 15, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+    
+  //CloudWithChip = new FloatingObject( "cloudmin.png", illu, { depth:14, initPcX:0.8, initPcY:0.57, initDispX:25, initDispY:0, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  
+  //bitArray = new FloatingObject( "bin.png", illu, { depth:14, initPcX:.77, initPcY:.66, initDispX: -4, initDispY: -5, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+    
+  //instruments = new FloatingObject( "inst.png", illu, { depth:14, initPcX:.73, initPcY:.63, floatFrequency:.03, floatAmplitude:2, initDispX: 10, initDispY: 20,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+   
+  //Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.84, initPcY:.59, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  
+
+  
+  
+  
+
   
   
   //shelfLeftSmall = new FloatingObject( "shelf-left-small.png", illu, { depth:-4, initPcX:.23, initPcY:.48, hideBelowX:sizeL, floatFrequency:.02, floatAmplitude:2, floatAngle:0});
@@ -318,6 +434,7 @@ function onAssetsLoaded(loader,resources){
   animate();
 }
 
+
 var FloatingObject = function(texName, parent, params){
   this.params = params || {};
   this.initPcX = this.params.initPcX || 0;
@@ -359,6 +476,13 @@ var FloatingObject = function(texName, parent, params){
   
   this.updatePosition();
 }
+
+
+
+
+
+
+
 
 FloatingObject.prototype.updatePosition = function(speed){
   var sp = speed || 0;
