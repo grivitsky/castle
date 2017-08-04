@@ -13,7 +13,12 @@ body{
   font-family:'Rakkas';
 }
 #pixiCanvas{
-    position: absolute;
+   width: 576px;
+   height: 576px;
+    float: right;
+    margin-top: 210px;
+    margin-right: 150px;
+
 }
 .title{
   position:absolute;

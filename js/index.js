@@ -9,8 +9,8 @@ var sizeS = 720;
 var sizeXS = 480;
 
 var pixiCanvas = document.getElementById("pixiCanvas");
-var framePadding = -20;
-var framePaddingTarget = 40;
+var framePadding = 0;
+var framePaddingTarget = 0;
 var parallaxCoeff = 2;
 var globalScale = 1;
 var brightness = 1;
@@ -18,7 +18,7 @@ var repulsion = .95;
 var noise = .0;
 var InitScaleAmount= 0.28;
    
-    var cw=0;
+/*    var cw=0;
   $(document).ready(function() {
      cw = $(window).width();
 
@@ -107,13 +107,13 @@ var InitScaleAmount= 0.28;
     onAssetsLoaded(loader,loader);
     }
   });
-
+*/
 
 var elements = [];
 var mousePos = {x:window.innerWidth/2, y:window.innerHeight/2};
 var myDisplayResolution = window.devicePixelRatio;
 
-var renderer = PIXI.autoDetectRenderer(800, 600, {
+var renderer = PIXI.autoDetectRenderer(576, 576, {
     antialiasing:true,
     transparent:true,
     resolution:1
@@ -144,15 +144,15 @@ function onMouseMove(event) {
   var tx = -1 + (event.clientX / WIDTH)*2;
   var ty = 1 - (event.clientY / HEIGHT)*2;
   mousePos = {x:tx, y:ty};
-  globalScale = .9 + (event.clientX / WIDTH)*.15;
-  repulsion = 0.9 + (event.clientX / WIDTH)*.05;
+  globalScale = .9 + (event.clientX / WIDTH)*.0015;
+  repulsion = 0.9 + (event.clientX / WIDTH)*.0015;
 }
 
 function onWindowResize() {
   
   WIDTH = window.innerWidth;
   HEIGHT = WIDTH/16*9;
-  renderer.resize(WIDTH, HEIGHT);
+  //renderer.resize(WIDTH, HEIGHT);
   repositionAll();
 }
 
@@ -235,37 +235,37 @@ function onAssetsLoaded(loader,resources){
   illu.mask = maskIllu;    
     
     
-  BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0.89, initPcY:0.17, floatFrequency:.02, floatAmplitude:7, initDispY:125, initDispX:-220,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  BusinessAnalyse = new FloatingObject( "ba.png", illu, { depth:14, initPcX:0, initPcY:0, floatFrequency:.02, floatAmplitude:5, initDispX:155, initDispY:78,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
     
-  Design = new FloatingObject( "ux.png", illu, { depth:14, initPcX:.68, initPcY:.5, floatFrequency:.025, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  Design = new FloatingObject( "ux.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:-45, initDispY:300, floatFrequency:.025, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
-  WebDev = new FloatingObject( "wd.png", illu, { depth:14, initPcX:.69, initPcY:.40, floatFrequency:.027, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  WebDev = new FloatingObject( "wd.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:-15, initDispY:180, floatFrequency:.027, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   //cupolaRight = new FloatingObject( "db.png", illu, { depth:-7, initPcX:.5, initPcY:0, initDispY:125, initDispX:220, initScaleX:-.5, hideBelowX:sizeM });
-  QA = new FloatingObject( "qa.png", illu, { depth:14, initPcX:.89, initPcY:.5, floatFrequency:.023, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  QA = new FloatingObject( "qa.png", illu, { depth:14, initPcX:.0, initPcY:.0,  initDispX:372, initDispY:300, floatFrequency:.023, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
-  MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.88, initPcY:0.18, floatFrequency:.021, floatAmplitude:7, initDispX:0, initDispY:200, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  MobileDev = new FloatingObject( "md.png", illu, { depth:14, initPcX:.0, initPcY:0,  initDispX:372, initDispY:173, floatFrequency:.021, floatAmplitude:7,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
     
 
-  CloudWithStar = new FloatingObject( "cloud2.png", illu, { depth:14, initPcX:0.76, initPcY:0.61, initDispX:10, initDispY:0, floatFrequency:.02, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });   
+  CloudWithStar = new FloatingObject( "cloud2.png", illu, { depth:14, initPcX:0, initPcY:0, initDispX:132, initDispY:400, floatFrequency:.02, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });   
   
-  CloudWithHDD = new FloatingObject( "cloud1.png", illu, { depth:14, initPcX:0.61, initPcY:0.44, initDispY:155, initDispX:215, floatFrequency:.03, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  CloudWithHDD = new FloatingObject( "cloud1.png", illu, { depth:14, initPcX:0, initPcY:0, initDispX:40, initDispY:380, floatFrequency:.03, floatAmplitude:2, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
     
-  planet = new FloatingObject( "erth.png", illu, { depth:14, initPcX:.81, initPcY:.47, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  planet = new FloatingObject( "erth.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:205, initDispY:254, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
     
-  orbit = new FloatingObject( "orbit.png", illu, { depth:14, initPcX:.82, initPcY:.45, floatFrequency:.03, floatAmplitude:5,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  orbit = new FloatingObject( "orbit.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:226, initDispY:234, floatFrequency:.03, floatAmplitude:5,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
-  database = new FloatingObject( "db.png", illu, { depth:14, initPcX:.75, initPcY:.45, floatFrequency:.03, floatAmplitude:5, floatAngle:0, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  database = new FloatingObject( "db.png", illu, { depth:14, initPcX:0, initPcY:0, initDispX:96, initDispY:228, floatFrequency:.03, floatAmplitude:5, floatAngle:0, initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
      
-  Circle = new FloatingObject( "circle.png", illu, { depth:14, initPcX:.81, initPcY:.65, initDispX: 15, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  Circle = new FloatingObject( "circle.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:230, initDispY:446, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
     
-  CloudWithChip = new FloatingObject( "cloudmin.png", illu, { depth:14, initPcX:0.8, initPcY:0.57, initDispX:25, initDispY:0, floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  CloudWithChip = new FloatingObject( "cloudmin.png", illu, { depth:14, initPcX:0, initPcY:0, initDispX:220, initDispY:355,  floatFrequency:.03, floatAmplitude:3,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
-  bitArray = new FloatingObject( "bin.png", illu, { depth:14, initPcX:.77, initPcY:.66, initDispX: -4, initDispY: -5, floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  bitArray = new FloatingObject( "bin.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:142, initDispY:440,  floatFrequency:.03, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
     
-  instruments = new FloatingObject( "inst.png", illu, { depth:14, initPcX:.73, initPcY:.63, floatFrequency:.03, floatAmplitude:2, initDispX: 10, initDispY: 20,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
+  instruments = new FloatingObject( "inst.png", illu, { depth:14, initPcX:.0, initPcY:.0, floatFrequency:.03, floatAmplitude:2, initDispX:74, initDispY:436,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount });
    
-  Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.85, initPcY:.59, initDispX: -12, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
+  Diagramm = new FloatingObject( "diagr.png", illu, { depth:14, initPcX:.0, initPcY:.0, initDispX:278, initDispY:386, floatFrequency:.05, floatAmplitude:2,  initScaleX: InitScaleAmount, initScaleY: InitScaleAmount }); 
   
     
     
